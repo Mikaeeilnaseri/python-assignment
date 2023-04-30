@@ -1,0 +1,18 @@
+first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+first_grade = float(input("Enter your first grade: "))
+second_grade = float(input("Enter your second grade: "))
+third_grade = float(input("Enter your third grade: "))
+if 0 <= first_grade <= 20 and 0 <= second_grade <= 20 and 0 <= third_grade <= 20:
+    avg_score = (first_grade + second_grade + third_grade) / 3
+else:
+    first_grade=float(input("number must be between 0 and 20,Rewrite your number: "))
+    second_grade=float(input("number must be between 0 and 20,Rewrite your number: "))
+    third_grade=float(input("number must be between 0 and 20,Rewrite your number: "))
+avg_score=(first_grade+second_grade+third_grade)/3
+if avg_score >=17:
+    print( "Student " + first_name + " " + last_name + " has achieved Great average scores in the last semester." + " Average: " + str( avg_score))
+elif 12 < avg_score < 17:
+    print("Student " + first_name + " " + last_name + " has achieved Normal average scores in the last semester." + " Average: " + str(avg_score))
+else:
+    print("Student " + first_name + " " + last_name + " has Failed to pass." + " Average: " + str(avg_score))
