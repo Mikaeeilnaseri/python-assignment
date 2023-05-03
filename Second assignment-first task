@@ -1,0 +1,51 @@
+import math
+while True:
+    con=input("calculate(1) or stop(0)?")
+    if con=="1":
+        number1=float(input("print first number: "))
+        number2=float(input("print second number: "))
+        act=input("+,-,*,/,sin,cos,tan,cont,factorial")
+        if act=="+":
+            print(number1+number2)
+        elif act=="-":
+            print(number1-number2)
+        elif act=="*":
+            print(number1*number2)
+        elif act=="/":
+            if number2==0:
+                while number2==0:
+                    number2=float(input("Enter a non-zero number: "))
+            print(number1/number2)
+        elif act=="sin":
+            choice=input("sin of which number you want to calculate?number1 or number2?")
+            if choice=="number1":
+                print(math.sin(number1*math.pi/180))
+            elif choice=="number2":
+                print(math.sin(number2*math.pi/180))
+        elif act=="cos":
+            choice=input("cos of which number you want to calculate?number1 or number2?")
+            if choice=="number1":
+                print(math.cos(number1*math.pi/180))
+            elif choice=="number2":
+                print(math.cos(number2*math.pi/180))
+        elif act=="tan":
+            choice=input("tan of which number you want to calculate?number1 or number2?")
+            if choice=="number1":
+                print(math.tan(number1*math.pi/180))
+            elif choice=="number2":
+                print(math.tan(number2*math.pi/180))
+        elif act=="cot":
+            choice=input("cot of which number you want to calculate?number1 or number2?")
+            if choice=="number1":
+                print((math.tan(number1*math.pi/180))**(-1))
+            elif choice=="number2":
+                print((math.tan(number2*math.pi/180))**(-1))
+        elif act=="factorial":
+            choice=input("factorial of which number you want to calculate?number1 or number2?")
+            if choice=="number1":
+                print(math.factorial(number1))
+            elif choice=="number2":
+                print(math.factorial(number2))
+
+    elif con=="0":
+        break
