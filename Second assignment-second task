@@ -1,11 +1,14 @@
 import random
-a=random.randint(1,6)
-print(a)
-while a!=6:
-    a=random.randint(1,6)
-    print(a)
-if a==6:
-    a=random.randint(1,6)
-    print(a)
-    a=random.randint(1,6)
-    print(a)
+while True:
+    choice=input("do you want to toss another dice?yes/no    ")
+    if choice=="yes":
+        a=random.randint(1,6)
+        print(a)
+        if a==6:
+            choice2=input("nice!you can toss twice as a prize,do you want it or not?")
+            if choice2=="yes":
+                print(random.randint(1,6))
+                print(random.randint(1,6))
+                break
+            elif choice2=="no":
+                break
