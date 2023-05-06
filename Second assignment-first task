@@ -4,7 +4,7 @@ while True:
     if con=="1":
         number1=float(input("print first number: "))
         number2=float(input("print second number: "))
-        act=input("+,-,*,/,sin,cos,tan,cont,factorial")
+        act=input("+,-,*,/,sin,cos,tan,cont,factorial,radical")
         if act=="+":
             print(number1+number2)
         elif act=="-":
@@ -43,9 +43,33 @@ while True:
         elif act=="factorial":
             choice=input("factorial of which number you want to calculate?number1 or number2?")
             if choice=="number1":
-                print(math.factorial(number1))
+                while number1<0:
+                    number1=float(input("zero or positive number: "))
+                    if number1>=0:
+                        break
+                print(math.factorial(int(number1)))
             elif choice=="number2":
-                print(math.factorial(number2))
+                while number2<0:
+                    number2=float(input("zero or positive number: "))
+                    if number2>=0:
+                        break
+                print(math.factorial(int(number2)))
+        elif act=="radical":
+            choice=input("which number?number1 or number2")
+            if choice=="number1":
+                while number1<0:
+                    number1=float(input("zero or positive number: "))
+                    if number1>=0:
+                        break
+                print(number1**(0.5))
+            if choice=="number2":
+                while number2<0:
+                    number2=float(input("zero or pisitive number: "))
+                    if number2>=0:
+                        break
+                print(number2**(0.5))
+
+
 
     elif con=="0":
         break
