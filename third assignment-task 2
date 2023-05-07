@@ -1,0 +1,14 @@
+import random
+choice=int(input("how many arrays must be in your random list? "))
+a=[random.randint(1,choice)]
+
+for i in range(choice-1):
+    a.append(random.randint(1,choice))
+print(a)
+while True:
+    for i in range(choice):
+        for j in range(choice):
+            while i!=j and a[i]==a[j]:
+                a[i]=random.randint(1,choice)
+                print(a)
+                exit
