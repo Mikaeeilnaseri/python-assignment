@@ -1,0 +1,16 @@
+import random
+pc=random.randint(1,40)
+user=float(input("enter your guess between 1 to 40 "))
+i=1
+while user!=pc:
+    print("wrong value")
+    if user>pc:
+        user=float(input("choice a smaller guess: "))
+        i=i+1
+    elif pc>user:
+        user=float(input("choice a bigger guess: "))
+        i=i+1
+    elif pc==user:
+        i=i+1
+print(pc,"!nice choice")
+print(i," times you have guessed")
