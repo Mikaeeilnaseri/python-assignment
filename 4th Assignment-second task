@@ -1,0 +1,19 @@
+    # equation is A*x**2+B*x+C=0
+
+    delta = B ** 2 - 4 * A * C
+
+    if delta >= 0:
+        answer1 = (-B + delta ** 0.5) / (2 * A)
+        answer2 = (-B - delta ** 0.5) / (2 * A)
+        print('The answers are: %5.2f and %5.2f' % (answer1, answer2))
+    else:
+        print('YOUR EQUATION HAS NO REAL ANSWER')
+
+
+print('The form of equation is A*x^2 + B*x + C =0')
+
+A = int(input('A= '))
+B = int(input('B= '))
+C = int(input('C= '))
+
+solver(A, B, C)
