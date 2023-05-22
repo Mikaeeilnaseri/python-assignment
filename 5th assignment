@@ -1,0 +1,59 @@
+while True:
+    choice=input("Do you want to play a game?yes or no  ")
+    if choice=="yes":
+        #define XO game board and breakpoint for breaking the loop if anyone wins
+        game_board=[[0,0,0],
+                    [0,0,0],
+                    [0,0,0]]
+        end_point=1
+        #define a function for printing game_board properly
+        def print_board():
+            print(game_board[0])
+            print(game_board[1])
+            print(game_board[2])
+        print_board()
+        for i in range(9):
+        #now we grant row and column from player(Player one by sign X and player two by sign o)
+            if i%2==0 and end_point==1:
+                row=int(input("Player 1 enter row: "))
+                column=int(input("Player 1 enter column: "))
+                while (row>3 or row<=0) or (column>3 or row<=0):
+                    print("wrong values")
+                    row = int(input("player 1 re-enter row: "))
+                    column = int(input("player 1 re-enter column: "))
+                while game_board[row-1][column-1]!=0:
+                    print("It has been chosen before,try another number")
+                    row=int(input("player 1 re-enter row: "))
+                    column=int(input("player 1 re-enter column: "))
+                game_board[row-1][column-1]="X"
+                print_board()
+                if game_board[0]==["X","X","X"] or game_board[1]==["X","X","X"] or game_board[2]==["X","X","X"] or (game_board[1][0]=="X" and game_board[2][0]=="X" and game_board[0][0]=="X") or (game_board[0][1]=="X" and game_board[0][2]=="X" and game_board[0][0]=="X") or (game_board[0][2]=="X" and game_board[1][2]=="X" and game_board[2][2]=="X") or (game_board[0][0]=="X" and game_board[1][1]=="X" and game_board[2][2]=="X") or (game_board[0][2]=="X" and game_board[1][1]=="X" and game_board[2][0]=="X"):
+                    print("Player 1 Won!")
+                    end_point=0
+                if end_point==0:
+                    break
+            elif i%2==1 and end_point==1:
+                row=int(input("Player 2 enter row: "))
+                column=int(input("Player 2 enter column: "))
+                while (row > 3 or row <= 0) or (column > 3 or row <= 0):
+                    print("wrong values")
+                    row = int(input("Player 2 re-enter row: "))
+                    column = int(input("Player 2 re-enter column: "))
+                while game_board[row-1][column-1]!=0:
+                    print("It has been chosen before,try another number")
+                    row = int(input("player 2 re-enter row: "))
+                    column = int(input("player 2 re-enter column: "))
+                game_board[row-1][column-1]="o"
+                print_board()
+                if game_board[0]==["o","o","o"] or game_board[1]==["o","o","o"] or game_board[2]==["o","o","o"] or (game_board[0][0]=="o" and game_board[1][0]=="" and game_board[2][0]=="o") or (game_board[0][1]=="o" and game_board[1][1]=="o" and game_board[2][1]=="o") or (game_board[0][2]=="o" and game_board[1][2]=="o" and game_board[2][2]=="o") or (game_board[0][0]=="o" and game_board[1][1]=="o" and game_board[2][2]=="o") or (game_board[0][2]=="o" and game_board[1][1]=="o" and game_board[2][0]=="o"):
+                    print("Player 2 Won!")
+                    end_point=0
+                if end_point==0:
+                    break
+                if i==9:
+                    if game_board[0]==["X","X","X"] or game_board[1]==["X","X","X"] or game_board[2]==["X","X","X"] or (game_board[0][0]=="X" and game_board[1][0]=="X" and game_board[2][0]=="X") or (game_board[0][1]=="X" and game_board[1][1]=="X" and game_board[2][1]=="X") or (game_board[0][2]=="X" and game_board[1][2]=="X" and game_board[2][2]=="X") or (game_board[0][0]=="X" and game_board[1][1]=="X" and game_board[2][2]=="X") or (game_board[0][2]=="X" and game_board[1][1]=="X" and game_board[2][0]=="X"):
+                        print("Player 1 Won!")
+        if end_point==1:
+            print("no player won!")
+    elif choice=="no":
+        break
