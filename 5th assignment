@@ -1,6 +1,6 @@
 while True:
-    choice=input("Do you want to play a game?yes or no  ")
-    if choice=="yes":
+    choice=input("Do you want to play a game? Yes or No: ")
+    if choice=="yes" or choice=="Yes":
         #define XO game board and breakpoint for breaking the loop if anyone wins
         game_board=[[0,0,0],
                     [0,0,0],
@@ -8,9 +8,10 @@ while True:
         end_point=1
         #define a function for printing game_board properly
         def print_board():
-            print(game_board[0])
-            print(game_board[1])
-            print(game_board[2])
+            for row in game_board:
+                for cell in row:
+                    print(cell, end=" ")
+                print()
         print_board()
         for i in range(9):
         #now we grant row and column from player(Player one by sign X and player two by sign o)
@@ -27,7 +28,7 @@ while True:
                     column=int(input("player 1 re-enter column: "))
                 game_board[row-1][column-1]="X"
                 print_board()
-                if game_board[0]==["X","X","X"] or game_board[1]==["X","X","X"] or game_board[2]==["X","X","X"] or (game_board[1][0]=="X" and game_board[2][0]=="X" and game_board[0][0]=="X") or (game_board[0][1]=="X" and game_board[0][2]=="X" and game_board[0][0]=="X") or (game_board[0][2]=="X" and game_board[1][2]=="X" and game_board[2][2]=="X") or (game_board[0][0]=="X" and game_board[1][1]=="X" and game_board[2][2]=="X") or (game_board[0][2]=="X" and game_board[1][1]=="X" and game_board[2][0]=="X"):
+                if game_board[0]==["X","X","X"] or game_board[1]==["X","X","X"] or game_board[2]==["X","X","X"] or (game_board[1][0]=="X" and game_board[2][0]=="X" and game_board[0][0]=="X") or (game_board[0][1]=="X" and game_board[1][1]=="X" and game_board[2][1]=="X") or (game_board[0][2]=="X" and game_board[1][2]=="X" and game_board[2][2]=="X") or (game_board[0][0]=="X" and game_board[1][1]=="X" and game_board[2][2]=="X") or (game_board[0][2]=="X" and game_board[1][1]=="X" and game_board[2][0]=="X"):
                     print("Player 1 Won!")
                     end_point=0
                 if end_point==0:
@@ -54,6 +55,6 @@ while True:
                     if game_board[0]==["X","X","X"] or game_board[1]==["X","X","X"] or game_board[2]==["X","X","X"] or (game_board[0][0]=="X" and game_board[1][0]=="X" and game_board[2][0]=="X") or (game_board[0][1]=="X" and game_board[1][1]=="X" and game_board[2][1]=="X") or (game_board[0][2]=="X" and game_board[1][2]=="X" and game_board[2][2]=="X") or (game_board[0][0]=="X" and game_board[1][1]=="X" and game_board[2][2]=="X") or (game_board[0][2]=="X" and game_board[1][1]=="X" and game_board[2][0]=="X"):
                         print("Player 1 Won!")
         if end_point==1:
-            print("no player won!")
-    elif choice=="no":
+            print("No player won!")
+    elif choice=="no" or choice =="No":
         break
