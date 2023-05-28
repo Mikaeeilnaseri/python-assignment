@@ -1,0 +1,139 @@
+#niaz be ye file text ke database e foroshgahe internetim bashe darim
+def read_from_store_database():
+    file = open("/Users/macbookpro/Desktop/jalaseye 6/store database")
+    for line in file:
+        product= line.split(",")
+        product={"code":product[0],"name":product[1],"price":product[2],"remaining":product[3]}
+        products.append(product)
+    file.close()
+def show_menu():
+    print("1=add")
+    print("2=edit")
+    print("3=delete")
+    print("4=purchase")
+    print("5=show products")
+    print("6=search")
+    print("7=exit")
+products=[]
+line=[]
+final_price=0
+shop_list=[]
+read_from_store_database()
+print(products)
+while True:
+    show_menu()
+    user_choice=input("select: ")
+    #ta inja class tamoom shod
+    def add():
+        code=input("enter code : ")
+        name = input("Name : ")
+        price = input("price: ")
+        remaining=input("remaining: ")
+        product={"code":code,"name": name ,"price":price,"remaining":remaining}
+        products.append(product)
+        show_products()
+    def edit():
+        code=input("enter code number of the product you want to edit: ")
+        for i in range(len(products)):
+                if products[i]["code"]==code:
+                    choice_2=int(input("which variable do you want to change?1=name,2=price,3=remaining"))
+                    if choice_2==1:
+                        print("Enter new name for product with code number ",products[i]["code"],": ","(current name is: ",products[i]["name"],")")
+                        products[i]["name"]=input()
+                        print("list has been update successfully")
+                        show_products()
+                        break
+                    elif choice_2==2:
+                        print("Enter new price for product with code number ",products[i]["code"],": ","(current price is: ",products[i]["price"],")")
+                        products[i]["price"]=input()
+                        print("list has been update successfully")
+                        show_products()
+                        break
+                    elif choice_2==3:
+                        print("Enter how many products with code number ",products[i]["code"]," have remained:","(remaining number is: ",products[i]["remaining"],")")
+                        products[i]["remaining"]=input()
+                        print("list has been update successfully")
+                        show_products()
+                        break
+                    else:
+                        print("wrong values,Re-enter your choice again")
+                        edit()
+    def delete():
+        code=input("Which product you want to delete?Enter the code: ")
+        for i in range(len(products)):
+            if products[i]["code"]==code:
+                products.remove(products[i])
+                print("selected item has been deleted successfully")
+                show_products()
+                break
+    def print_shoplist():
+        print("id \t name \t price \t count")
+        a=0
+        for i in range(len(shop_list)):
+            print(shop_list[i]["code"], shop_list[i]["name"], shop_list[i]["price"], shop_list[i]["count of buying"])
+            a +=shop_list[i]["price"]
+        print("You must pay: ",a)
+    def buy():
+        code=input("enter code number of the product you would like to buy: ")
+        for i in range(len(products)):
+            if products[i]["code"]==code:
+                print("How many of this product you would like to buy? (current remaining: ",products[i]["remaining"],")")
+                count_of_purchase=int(input())
+                if count_of_purchase<=int(products[i]["remaining"]):
+                    b=int(products[i]["remaining"])-count_of_purchase
+                    products[i]["remaining"] =str(b)
+                    print("your purchase has been successful,Here is your shopping list:")
+                    a={"code":products[i]["code"],"name":products[i]["name"],"price":int(products[i]["price"])*count_of_purchase,"count of buying":count_of_purchase}
+                    shop_list.append(a)
+                    print_shoplist()
+                    choice3=input("Do you want to buy another thing?(y)/(n)? ")
+                    if choice3=="y":
+                        buy()
+                    elif choice3=="n":
+                        break
+                else:
+                    print("Not enough products to be sold,choose a number less than ",products[i]["remaining"])
+                    buy()
+        print_shoplist()
+    def show_products():
+        print("id \t name \t price \t count")
+        for i in range(len(products)):
+            print(products[i]["code"], products[i]["name"], products[i]["price"], products[i]["remaining"])
+    def search():
+        user_input=input("Enter keyword")
+        for produt in products:
+            if user_input==produt["code"] or user_input==produt["name"]:
+                print(produt)
+                break
+            else:
+                print("not found")
+                search()
+    def write_to_database():
+        file=open("/Users/macbookpro/Desktop/jalaseye 6/store database","w")
+        L=""
+        M=""
+        for i in range(len(products)):
+            X=[products[i]["code"],products[i]["name"],products[i]["price"],products[i]["remaining"]]
+            for j in range(len(X)):
+                L +=X[j]+","
+            L=L[:-1]
+        M +=L+"\n"
+        file.write(M)
+        file.close()
+
+    #edameye jalase 7
+    if user_choice=="1":
+        add()
+    if user_choice=="2":
+        edit()
+    if user_choice=="3":
+        delete()
+    if user_choice=="4":
+        buy()
+    if user_choice=="5":
+        show_products()
+    if user_choice=="6":
+        search()
+    if user_choice=="7":
+        write_to_database()
+        exit()
