@@ -23,7 +23,6 @@ print(products)
 while True:
     show_menu()
     user_choice=input("select: ")
-    #ta inja class tamoom shod
     def add():
         code=input("enter code : ")
         name = input("Name : ")
